@@ -1,6 +1,7 @@
-import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:blabird_app/pages/home_page.dart';
+import 'package:english_words/english_words.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,12 +15,12 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
       child: MaterialApp(
-        title: 'Namer App',
+        title: 'Blabird App',
         theme: ThemeData(
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
         ),
-        home: MyHomePage(),
+        home: HomePage(),
       ),
     );
   }
@@ -27,20 +28,4 @@ class MyApp extends StatelessWidget {
 
 class MyAppState extends ChangeNotifier {
   var current = WordPair.random();
-}
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-
-    return Scaffold(
-      body: Column(
-        children: [
-          Text('A random idea:'),
-          Text(appState.current.asLowerCase),
-        ],
-      ),
-    );
-  }
 }
